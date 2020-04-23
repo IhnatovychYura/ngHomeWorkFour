@@ -10,6 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 export class AllUsersComponent implements OnInit {
 
   users: UserModel[];
+
   constructor(private activateRoute: ActivatedRoute) {
     this.users = this.activateRoute.snapshot.data.allUsers;
   }

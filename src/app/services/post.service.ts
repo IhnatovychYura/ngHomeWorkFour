@@ -15,4 +15,12 @@ export class PostService {
    return this.http.get<PostModel[]>('http://jsonplaceholder.typicode.com/posts');
   }
 
+  getPost(id): Observable<PostModel[]> {
+    return this.http.get<PostModel[]>(`http://jsonplaceholder.typicode.com/posts?userId=${id}`);
+  }
+
+  getPostOfComment(id): Observable<PostModel[]> {
+    return this.http.get<PostModel[]>(`http://jsonplaceholder.typicode.com/posts?id=${id}`);
+  }
+
 }

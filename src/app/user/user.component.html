@@ -4,4 +4,10 @@
   {{user.username}}
   {{user.email}}
   {{user.website}}
+  <button (click)="navigate(user)">Show Posts</button>
+
+  <!-- Інші варіанти маршрутизації:
+  <button><a routerLink="{{user.id}}/posts">Show Posts</a></button>
+  <button><a [routerLink]="[user.id, 'posts']">Show Posts</a></button>
+  -->
 </div>

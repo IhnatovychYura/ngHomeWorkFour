@@ -1,7 +1,8 @@
 <div>
-  {{comment.postId}}
-  {{comment.id}}
-  {{comment.name}}
-  {{comment.email}}
-  {{comment.body}}
+  <h3> Comment #{{comment.id}} to Post #{{comment.postId}}</h3>
+  <div>Comment name -{{comment.name}}</div>
+  <div>Comment body -{{comment.body}}</div>
+  <button (click)="navigate(comment)">Show Post this Comment belong to</button>
+
+  <!--<button><a [routerLink]="[comment.id, 'posts']">Show Post Id of this comment</a></button>-->
 </div>

@@ -1,5 +1,8 @@
-{{post.userId}}
-{{post.id}}
-{{post.title}}
-{{post.body}}
-<br />
+<div>
+  <h3> Post #{{post.id}} by User #{{post.userId}} </h3>
+  <div>Title -{{post.title}}</div>
+  <div>Body -{{post.body}}</div>
+  <button (click)="navigate(post)">Show Comments</button>
+<hr />
+</div>
+

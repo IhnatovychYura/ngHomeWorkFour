@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
-import {PostModel} from "../../models/PostModel";
+import {PostModel} from '../../models/PostModel';
+import {ActivatedRoute, Router} from '@angular/router';
+import {PostService} from '../services/post.service';
 
 @Component({
   selector: 'app-post',
@@ -11,6 +13,14 @@ export class PostComponent {
   @Input()
   post: PostModel;
 
-  constructor() { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private postService: PostService) {
+  }
 
+  navigate(post: PostModel) {
+    this.router.navigate([post.id, 'comments'], {
+      state: {post},
+      queryParams: {idOfPost: post.id},
+      relativeTo: this.activatedRoute
+    });
+  }
 }

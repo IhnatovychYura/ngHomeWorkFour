@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class UserResolverService implements Resolve<UserModel[]> {
+export class AllUsersResolverService implements Resolve<UserModel[]> {
 
   constructor(private userService: UserService) {
   }

@@ -11,15 +11,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { AllPostsComponent } from './all-posts/all-posts.component';
 import { AllCommentsComponent } from './all-comments/all-comments.component';
-import { UserResolverService } from './services/user-resolver.service';
-import { PostResolverService } from './services/post-resolver.service';
-import { CommentResolverService } from './services/comment-resolver.service';
+import { AllUsersResolverService } from './services/all-users-resolver.service';
+import { AllPostsResolverService } from './services/all-posts-resolver.service';
+import { AllCommentsResolverService } from './services/all-comments-resolver.service';
+import {CommentResolverService} from './services/comment-resolver.service';
+import {PostOfCommentComponent} from './post-of-comment/post-of-comment.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent},
-  {path: 'users', component: AllUsersComponent, resolve: {allUsers: UserResolverService} },
-  {path: 'posts', component: AllPostsComponent, resolve: {allPosts: PostResolverService} },
-  {path: 'comments', component: AllCommentsComponent, resolve: {allComments: CommentResolverService} },
+  {path: 'users', component: AllUsersComponent, resolve: {allUsers: AllUsersResolverService}, children: [
+    {path: ':id/posts', component: AllPostsComponent}
+    ]},
+  {path: 'posts', component: AllPostsComponent, resolve: {allPosts: AllPostsResolverService}, children: [
+      {path: ':id/comments', component: AllCommentsComponent, resolve: {comment: CommentResolverService}}
+    ]},
+  {path: 'comments', component: AllCommentsComponent, resolve: {allComments: AllCommentsResolverService}, children: [
+      {path: ':postId/posts', component: PostOfCommentComponent}
+    ]},
 ];
 
 @NgModule({
@@ -32,6 +40,7 @@ const routes: Routes = [
     AllUsersComponent,
     AllPostsComponent,
     AllCommentsComponent,
+    PostOfCommentComponent,
   ],
   imports: [
     BrowserModule,
