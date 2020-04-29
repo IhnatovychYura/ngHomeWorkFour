@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {CommentModel} from '../../models/CommentModel';
-import {PostModel} from '../../models/PostModel';
+import {CommentModel} from '../../../../models/CommentModel';
+import {PostModel} from '../../../../models/PostModel';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
